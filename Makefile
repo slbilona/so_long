@@ -34,6 +34,11 @@ fclean : clean
 	make fclean -C Libft_clone
 	rm -f $(NAME)
 
+git : fclean
+	git add *
+	git commit
+	git push
+
 re : fclean all
 
 .PHONY : all clean fclean re
