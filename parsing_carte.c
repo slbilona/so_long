@@ -22,6 +22,7 @@ int ft_verif_e_p_c(int fd)
 	{
 		if(ft_strchr(str, 'E'))
 			exit++;
+//modifier (il peut y avoir plusieurs item !!! Il faut juste verifier qu'il y en a bien au moins 1 !!!
 		if(ft_strchr(str, 'C'))
 			collectible++;
 		if(ft_strchr(str, 'P'))
