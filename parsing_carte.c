@@ -1,6 +1,4 @@
 #include "so_long.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 int ft_verification(int fd)
 {
@@ -18,22 +16,57 @@ int ft_verification(int fd)
 		position += ft_new_strchr(str, 'P');
 		if(ft_isstr(str, "01CEP\n") == 1)
 			return (1);
-		if(ft_verif_rectangle(str) == 1)
+		if(ft_verif_lignes(str) == 1)
 			return(1);
+		ft_verif_rectangle(str);
 		free(str);
 		i++;
 		if(ft_verification(fd) == 1)
 			return 1;
 	}
+	if(ft_verif_rectangle(str) == 1)
+		return (1);
 	if(position != 1 || ft_exit != 1 || collectible < 1)
 		return (1);
-	//verif murs
-	//verif rectangle
-	//verif entre/sortie/perso/items
 	return (0);
 }
 
-int	ft_verif_rectangle(char *str)
+int ft_verif_rectangle(char *str)
+{
+	static int y = 0;
+	static int x = 0;
+	
+	if(!str)
+	{
+		if(y == x)
+			return (1);
+	}
+	else
+	{
+		x = ft_new_strlen(str);
+		if(ft_verif_murs(str, y, x) == 1)
+		{
+			ft_printf("%d\n", x);
+			return (1);
+		}
+		y++;
+	}
+	return (0);
+}
+
+//fonctionne pas
+int ft_verif_murs(char *str, int y, int x)
+{
+	(void) y;
+	if(str[0] == '1' && str[x - 1] == '1')
+	{
+		ft_printf("str[0] : %c, str[x - 1] : %c\n", str[0], str[x - 1]);
+		return (0);
+	}
+	return (1);
+}
+
+int	ft_verif_lignes(char *str)
 {
 	static int	i = 0;
 	static int	j = 0;
