@@ -1,11 +1,12 @@
 SRCS = main.c \
 	parsing_carte.c \
+	utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -g 
+CFLAGS = -g -Wall -Werror -Wextra 
 
 NAME = so_long
 

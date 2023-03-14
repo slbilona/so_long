@@ -7,9 +7,15 @@
 #include <fcntl.h>
 # include "minilibx-linux/mlx.h"
 
+
+
 // parsing carte
-int ft_checking();
-int ft_verif_e_p_c(int fd);
+int ft_verification(int fd);
 int	ft_isstr(const char *s1, const char *s2);
+int	ft_verif_rectangle(char *str);
+
+//utils
+int ft_new_strchr(char *str, char c);
+int ft_new_strlen(char *str);
 
 #endif

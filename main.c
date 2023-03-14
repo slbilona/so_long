@@ -17,11 +17,17 @@
 //     mlx_loop(mlx);
 // }
 
-int main()
+int main(int ac, char **av)
 {
-	if(!ft_checking())
-		ft_printf("Error\n");
-	else
-		ft_printf("c'est bon pour le moment\n");
+	int fd;
+
+	if(ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		if(ft_verification(fd))
+			ft_printf("Error\n");
+		else
+			ft_printf("c'est bon pour le moment\n");
+	}
 	return (0);
 }
