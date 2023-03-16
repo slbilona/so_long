@@ -11,16 +11,15 @@
 
 
 // parsing carte
-int ft_verification(int fd);
-int	ft_isstr(const char *s1, const char *s2);
-int	ft_verif_lignes(char *str);
-int ft_verif_rectangle(char *str);
+int		ft_verification_map(char **map);
+int		ft_verif_lignes(char **map);
+int		ft_isstr(char **map, const char *s2);
+char	**ft_creation_map(int fd);
 
 //utils
-int     ft_new_strlen(char *str);
-int     ft_new_strchr(char *str, char c);
-int     ft_erreur(char *str, char **map, int y);
+int		ft_erreur(char **map);
+int		ft_new_strchr(char *str, char c);
 char	**ft_add_line(char **temp, char *str);
-void    ft_free_temp(char **temp, int y);
+void	ft_free_temp(char **temp, int y);
 
 #endif

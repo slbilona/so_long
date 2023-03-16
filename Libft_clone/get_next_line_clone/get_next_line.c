@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:57:09 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/02/18 17:16:23 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:30:27 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ char	*ft_copy(const char *str)
 		ligne[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-	{
-		ligne[i] = str[i];
-		i++;
-	}
+	// if (str[i] == '\n')
+	// {
+	// 	ligne[i] = str[i];
+	// 	i++;
+	// }
 	ligne[i] = 0;
 	return (ligne);
 }

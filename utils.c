@@ -15,16 +15,6 @@ int	ft_new_strchr(char *str, char c)
 	return (compte);
 }
 
-int	ft_new_strlen(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	return (i);
-}
-
 char	**ft_add_line(char **temp, char *str)
 {
 	char **map;
@@ -32,28 +22,30 @@ char	**ft_add_line(char **temp, char *str)
 	int i;
 	int j;
 
-	i = 0;
 	j = y - 1;
-	map = malloc(sizeof(char *) * (y + 1));
-	map[y] = malloc(sizeof(char) * (ft_new_strlen(str) + 1));
+	map = malloc(sizeof(char *) * (y + 2));
+	map[y] = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	while (j >= 0)
 	{
+		i = 0;
 		map[j] = malloc(sizeof(char) * (ft_strlen(temp[j]) + 1));
 		while (temp[j][i])
 		{
 			map[j][i] = temp[j][i];
 			i++;
 		}
-		temp[j][i] = 0;
+		map[j][i] = 0;
 		j--;
-	} 
+	}
+	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
 		map[y][i] = str[i];
 		i++;
 	}
 	map[y][i] = 0;
-	//ft_free_temp(temp, y);
+	map[y + 1] = NULL;
+	ft_free_temp(temp, y);
 	y++;
 	return (map);
 }
@@ -67,20 +59,20 @@ void ft_free_temp(char **temp, int y)
 			free(temp[y]);
 			y--;
 		}
+		free(temp);
 	}
 }
 
-int ft_erreur(char *str, char **map, int y)
+int ft_erreur(char **map)
 {
-	if(map)
+	int i;
+
+	i = 0;
+	while(map[i])
 	{
-		while(y >= 0)
-		{
-			free(map[y]);
-			y--;
-		}
+		free(map[i]);
+		i++;
 	}
-	get_next_line(-1);
-	free(str);
+	free(map);
 	return (1);
 }
