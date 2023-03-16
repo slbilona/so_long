@@ -89,8 +89,8 @@ int		ft_verification_map(char **map)
 	if(ft_verif_lignes(map))
 		return (ft_erreur(map));
 	//verif murs
-	int i;
 
+	int i;
 	i = 0;
 	while(map[i])
 	{
