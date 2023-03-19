@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 19:18:57 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/03/19 00:29:21 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_new_strchr(char *str, char c)
 {
-	int i;
-	int compte;
+	int	i;
+	int	compte;
 
 	i = 0;
 	compte = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i++] == c)
+		if (str[i++] == c)
 			compte++;
 	}
 	return (compte);
@@ -17,10 +29,10 @@ int	ft_new_strchr(char *str, char c)
 
 char	**ft_add_line(char **temp, char *str)
 {
-	char **map;
-	static int y = 0;
-	int i;
-	int j;
+	static int	y = 0;
+	char		**map;
+	int			i;
+	int			j;
 
 	j = y - 1;
 	map = malloc(sizeof(char *) * (y + 2));
@@ -50,11 +62,11 @@ char	**ft_add_line(char **temp, char *str)
 	return (map);
 }
 
-void ft_free_temp(char **temp, int y)
+void	ft_free_temp(char **temp, int y)
 {
-	if(y > 0)
+	if (y > 0)
 	{
-		while(y >= 0)
+		while (y >= 0)
 		{
 			free(temp[y]);
 			y--;
@@ -63,16 +75,53 @@ void ft_free_temp(char **temp, int y)
 	}
 }
 
-int ft_erreur(char **map)
+int	ft_erreur(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		free(map[i]);
 		i++;
 	}
 	free(map);
+	return (1);
+}
+
+int	ft_trouve_y(char **map)
+{
+	int	j;
+
+	j = 0;
+	while (map[j])
+		j++;
+	return (j);
+}
+
+int ft_verif_ber(char *str)
+{
+	int i;
+	int j;
+	char ber[4];
+	
+	i = 0;
+	j = 0;
+	ber[0] = '.';
+	ber[1] = 'b';
+	ber[2] = 'e';
+	ber[3] = 'r';
+	ber[4] = 0;
+	while (str[i])
+	{
+		if(str[i] == ber[j])
+		{
+			j++;
+		}
+	i++;
+	}
+	if(!ber[j])
+		return (0);
+	
 	return (1);
 }

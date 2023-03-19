@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_carte.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/03/18 19:25:34 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-char **ft_creation_map(int fd)
+char	**ft_creation_map(int fd)
 {
 	char		*str;
 	static char	**map;
@@ -18,32 +30,32 @@ char **ft_creation_map(int fd)
 
 int	ft_verif_lignes(char **map)
 {
-	int j;
-	int temp;
+	int	j;
+	int	temp;
 
 	j = 0;
 	temp = ft_strlen(map[0]);
-	while(map[j])
+	while (map[j])
 	{
-		if(temp != (int)ft_strlen(map[j]))
+		if (temp != (int)ft_strlen(map[j]))
 			return (1);
 		j++;
 	}
-	if(j == temp)
+	if (j == temp)
 		return (1);
 	return (0);
 }
 
 int	ft_isstr(char **map, const char *s2)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	j = 0;
 	while (map[j])
 	{
 		i = 0;
-		while(map[j][i])
+		while (map[j][i])
 		{
 			if (ft_strchr(s2, map[j][i]) == 0)
 				return (1);
@@ -54,42 +66,74 @@ int	ft_isstr(char **map, const char *s2)
 	return (0);
 }
 
-int ft_verification_CPE(char **map)
+int	ft_verification_murs(char **map)
 {
-	int j;
-	int C;
-	int P;
-	int E;
+	int	j;
+	int	i;
+	int	y;
 
-	j = 0;
-	C = 0;
-	P = 0;
-	E = 0;
-	while (map[j])
+	j = 1;
+	i = 0;
+	y = ft_trouve_y(map) - 1;
+	while (map[0][i])
 	{
-		E += ft_new_strchr(map[j], 'E');
-		C += ft_new_strchr(map[j], 'C');
-		P += ft_new_strchr(map[j], 'P');
+		if (map[0][i] != '1')
+			return (1);
+		i++;
+	}
+	i--;
+	while (j < y)
+	{
+		if (map[j][0] != '1' || map[j][i] != '1')
+			return (1);
 		j++;
 	}
-	if (E != 1 || P != 1 || C <= 0)
+	i = 0;
+	while (map[y][i])
+	{
+		if (map[y][i] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_verification_cpe(char **map)
+{
+	int	j;
+	int	c;
+	int	p;
+	int	e;
+
+	j = 0;
+	c = 0;
+	p = 0;
+	e = 0;
+	while (map[j])
+	{
+		e += ft_new_strchr(map[j], 'E');
+		c += ft_new_strchr(map[j], 'C');
+		p += ft_new_strchr(map[j], 'P');
+		j++;
+	}
+	if (e != 1 || p != 1 || c <= 0)
 		return (1);
 	return (0);
 }
 
-int		ft_verification_map(char **map)
+int	ft_verification_map(char **map)
 {
-	//verif caracteres
-	if(ft_isstr(map, "CEP01"))
+	if (ft_isstr(map, "CEP01"))
 		return (ft_erreur(map));
-	//verifs C E P
-	if(ft_verification_CPE(map))
+	if (ft_verification_cpe(map))
 		return (ft_erreur(map));
-	//verif lignes et rectangles
-	if(ft_verif_lignes(map))
+	if (ft_verif_lignes(map))
 		return (ft_erreur(map));
-	//verif murs
-
+	if (ft_verification_murs(map))
+		return (ft_erreur(map));
+	if (ft_verification_chemin(map, ft_trouve_p(map, 'i'),
+			ft_trouve_p(map, 'j')))
+		return (ft_erreur(map));
 	int i;
 	i = 0;
 	while(map[i])

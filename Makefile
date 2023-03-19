@@ -1,6 +1,7 @@
 SRCS = main.c \
 	parsing_carte.c \
 	utils.c \
+	verif_chemin.c \
 
 OBJS = $(SRCS:.c=.o)
 

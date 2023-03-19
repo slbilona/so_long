@@ -23,11 +23,14 @@ int main(int ac, char **av)
 
 	if(ac == 2)
 	{
-		fd = open(av[1], O_RDONLY);
-		if(ft_verification_map(ft_creation_map(fd)))
-			ft_printf("Error\n");
-		else
-			ft_printf("c'est bon pour le moment\n");
+		if(!ft_verif_ber(av[1]))
+		{
+			fd = open(av[1], O_RDONLY);
+			if(ft_verification_map(ft_creation_map(fd)))
+				ft_printf("Error\n");
+			else
+				ft_printf("c'est bon pour le moment\n");
+		}
 	}
 	return (0);
 }
