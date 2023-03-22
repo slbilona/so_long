@@ -1,22 +1,80 @@
 #include "so_long.h"
 
-// int    main(void)
+// typedef struct	s_data {
+// 	void	*img;
+// 	char	*addr;
+// 	int		bits_per_pixel;
+// 	int		line_length;
+// 	int		endian;
+// }				t_data;
+
+// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 // {
-//     void    *mlx;
-//     void    *mlx_win;
-//     void     *img;
-//     char     *relative_path = "download.xpm";
-//     int     img_width;
-//     int        img_height;
+// 	char	*dst;
 
-//     mlx = mlx_init();
-//     img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-//     mlx_win = mlx_new_window(mlx, 720, 570, "Hello world!");
-
-//     mlx_put_image_to_window(mlx, mlx_win, img, 5,5);
-//     mlx_loop(mlx);
+// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+// 	*(unsigned int*)dst = color;
 // }
 
+// int	main(void)
+// {
+// 	void	*mlx;
+// 	void	*mlx_win;
+// 	t_data	img;
+
+// 	mlx = mlx_init();
+// 	mlx_win = mlx_new_window(mlx, 1200, 1080, "Hello world!");
+// 	img.img = mlx_new_image(mlx, 1200, 1080);
+// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+// 	int i = 5;
+// 	int j = 5;
+// 	while(i < 1070)
+// 	{
+// 		if(j < 10)
+// 			my_mlx_pixel_put(&img, i, i, 0xABEC56);
+// 		else if (j < 20)
+// 			my_mlx_pixel_put(&img, i, i, 0xC756EC);
+// 		j++;
+// 		if(j == 20)
+// 			j = 0;
+		
+// 		i++;
+// 	}
+// 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+// 	mlx_loop(mlx);
+// }
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	ft_close(int keycode, t_vars *vars)
+{
+	static int i = 1;
+	if(keycode == 'w' || keycode == 'a' ||  keycode == 's' || keycode == 'd')
+	{
+		ft_printf("%d\n", i);
+		i++;
+	}
+	else if (keycode == 65307)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(EXIT_SUCCESS);
+	}
+}
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
+	mlx_loop(vars.mlx);
+}
+
+/*
 int main(int ac, char **av)
 {
 	int fd;
@@ -31,6 +89,8 @@ int main(int ac, char **av)
 			else
 				ft_printf("c'est bon pour le moment\n");
 		}
+		else
+			ft_printf("Error\n");
 	}
 	return (0);
-}
+}*/
