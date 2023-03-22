@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/18 19:25:34 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:50:42 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ int	ft_verification_cpe(char **map)
 
 int	ft_verification_map(char **map)
 {
+	if(!map)
+		return (1);
 	if (ft_isstr(map, "CEP01"))
 		return (ft_erreur(map));
 	if (ft_verification_cpe(map))

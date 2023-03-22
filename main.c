@@ -44,6 +44,7 @@
 // 	mlx_loop(mlx);
 // }
 
+/*
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -72,6 +73,53 @@ int	main(void)
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
 	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
 	mlx_loop(vars.mlx);
+}*/
+/*
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	key_hook(int keycode, t_vars *vars)
+{
+	ft_printf("Hello from key_hook!\n");
+	return (0);
+}
+
+int mouse_hook(int keycode, t_vars *vars)
+{
+	ft_printf("%d\n", keycode);
+	return (0);
+}
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
+	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_mouse_hook(vars.win, mouse_hook, &vars);
+	mlx_loop(vars.mlx);
+}*/
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	render_next_frame(int keycode, void *YourStruct)
+{
+	ft_printf("test\n");
+	return (0);
+}
+
+int	main(void)
+{
+	t_vars YourStruct;
+
+	YourStruct.mlx = mlx_init();
+	mlx_loop_hook(YourStruct.mlx, render_next_frame, &YourStruct);
+	mlx_loop(YourStruct.mlx);
 }
 
 /*
@@ -88,6 +136,7 @@ int main(int ac, char **av)
 				ft_printf("Error\n");
 			else
 				ft_printf("c'est bon pour le moment\n");
+			close(fd);
 		}
 		else
 			ft_printf("Error\n");
