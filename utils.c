@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:18:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/19 00:29:21 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:47:34 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ int	ft_trouve_y(char **map)
 	return (j);
 }
 
-int ft_verif_ber(char *str)
+int	ft_verif_ber(char *str)
 {
-	int i;
-	int j;
-	char ber[4];
+	char	ber[4];
+	int		i;
+	int		j;
 	
 	i = 0;
 	j = 0;
@@ -114,14 +114,11 @@ int ft_verif_ber(char *str)
 	ber[4] = 0;
 	while (str[i])
 	{
-		if(str[i] == ber[j])
-		{
+		if (str[i] == ber[j])
 			j++;
-		}
-	i++;
+		i++;
 	}
-	if(!ber[j])
+	if (!ber[j])
 		return (0);
-	
 	return (1);
 }

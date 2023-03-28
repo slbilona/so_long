@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/22 21:50:42 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:38:00 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,5 @@ int	ft_verification_map(char **map)
 	if (ft_verification_chemin(map, ft_trouve_p(map, 'i'),
 			ft_trouve_p(map, 'j')))
 		return (ft_erreur(map));
-	int i;
-	i = 0;
-	while(map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
 	return (0);
 }

@@ -1,79 +1,49 @@
 #include "so_long.h"
-
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }				t_data;
-
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-// {
-// 	char	*dst;
-
-// 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
-
-// int	main(void)
-// {
-// 	void	*mlx;
-// 	void	*mlx_win;
-// 	t_data	img;
-
-// 	mlx = mlx_init();
-// 	mlx_win = mlx_new_window(mlx, 1200, 1080, "Hello world!");
-// 	img.img = mlx_new_image(mlx, 1200, 1080);
-// 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-// 	int i = 5;
-// 	int j = 5;
-// 	while(i < 1070)
-// 	{
-// 		if(j < 10)
-// 			my_mlx_pixel_put(&img, i, i, 0xABEC56);
-// 		else if (j < 20)
-// 			my_mlx_pixel_put(&img, i, i, 0xC756EC);
-// 		j++;
-// 		if(j == 20)
-// 			j = 0;
-		
-// 		i++;
-// 	}
-// 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-// 	mlx_loop(mlx);
-// }
-
 /*
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
-int	ft_close(int keycode, t_vars *vars)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	static int i = 1;
-	if(keycode == 'w' || keycode == 'a' ||  keycode == 's' || keycode == 'd')
-	{
-		ft_printf("%d\n", i);
-		i++;
-	}
-	else if (keycode == 65307)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(EXIT_SUCCESS);
-	}
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
 int	main(void)
 {
-	t_vars	vars;
+	void	*mlx;
+	void	*mlx_win;
+	t_data	img;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L<<0, ft_close, &vars);
-	mlx_loop(vars.mlx);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1200, 1080, "Hello world!");
+	img.img = mlx_new_image(mlx, 1200, 1080);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	int i = 5;
+	int j = 5;
+	while(i < 1070)
+	{
+		if(j < 10)
+			my_mlx_pixel_put(&img, i, i, 0xABEC56);
+		else if (j < 20)
+			my_mlx_pixel_put(&img, i, i, 0xC756EC);
+		j++;
+		if(j == 20)
+			j = 0;
+		
+		i++;
+	}
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
 }*/
+
 /*
 typedef struct	s_vars {
 	void	*mlx;
@@ -101,7 +71,9 @@ int	main(void)
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_mouse_hook(vars.win, mouse_hook, &vars);
 	mlx_loop(vars.mlx);
-}*/
+}
+*/
+/*
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -120,7 +92,7 @@ int	main(void)
 	YourStruct.mlx = mlx_init();
 	mlx_loop_hook(YourStruct.mlx, render_next_frame, &YourStruct);
 	mlx_loop(YourStruct.mlx);
-}
+}*/
 
 /*
 int main(int ac, char **av)
