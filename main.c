@@ -115,3 +115,20 @@ int main(int ac, char **av)
 	}
 	return (0);
 }*/
+
+int    main(void)
+{
+    void    *mlx;
+    void    *mlx_win;
+    void     *img;
+    char     *relative_path = "/mnt/nfs/homes/ilselbon/Cursus/Cercle_3/so_long/img/pixil-frame-0-_1_.xpm";
+    int     img_width;
+    int        img_height;
+
+    mlx = mlx_init();
+    img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+    mlx_win = mlx_new_window(mlx, 720, 570, "Hello world!");
+
+    mlx_put_image_to_window(mlx, mlx_win, img, 100,100);
+    mlx_loop(mlx);
+}

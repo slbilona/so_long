@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:47:13 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/18 18:58:19 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:04:06 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,19 @@ int	ft_nombre_de_e_c(char **map, char c)
 
 int	verif_emplacement(char *map)
 {
-	if (*map == '0' || *map == 'C' || *map == 'E')
+	if (*map == 'E')
 	{
-		*map = 'B';
+		*map = 'e';
+		return (0);
+	}
+	if(*map == 'C')
+	{
+		*map = 'c';
+		return (0);
+	}
+	if(*map == '0')
+	{
+		*map = '2';
 		return (0);
 	}
 	return (1);
