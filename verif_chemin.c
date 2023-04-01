@@ -6,13 +6,13 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:47:13 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/30 19:04:06 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:57:45 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_trouve_p(char **map, char c)
+int	ft_trouve_p(char **map, char c, t_vars *vars)
 {
 	int	j;
 	int	i;
@@ -25,6 +25,8 @@ int	ft_trouve_p(char **map, char c)
 		{
 			if (map[j][i] == 'P')
 			{
+				vars->y = j * 50;
+				vars->x = i * 50;
 				if (c == 'i')
 					return (i);
 				else if (c == 'j')
@@ -61,19 +63,14 @@ int	ft_nombre_de_e_c(char **map, char c)
 
 int	verif_emplacement(char *map)
 {
-	if (*map == 'E')
+	if(*map == '0' || *map == 'C' || *map == 'E')
 	{
-		*map = 'e';
-		return (0);
-	}
-	if(*map == 'C')
-	{
-		*map = 'c';
-		return (0);
-	}
-	if(*map == '0')
-	{
-		*map = '2';
+		if (*map == 'E')
+			*map = 'e';
+		if(*map == 'C')
+			*map = 'c';
+		if(*map == '0')
+			*map = '2';
 		return (0);
 	}
 	return (1);

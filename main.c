@@ -129,6 +129,6 @@ int    main(void)
     img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
     mlx_win = mlx_new_window(mlx, 720, 570, "Hello world!");
 
-    mlx_put_image_to_window(mlx, mlx_win, img, 100,100);
+    mlx_put_image_to_window(mlx, mlx_win, img, 100, 100);
     mlx_loop(mlx);
 }

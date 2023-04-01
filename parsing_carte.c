@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/28 19:38:00 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/01 15:53:44 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,20 @@ int	ft_verification_cpe(char **map)
 	return (0);
 }
 
-int	ft_verification_map(char **map)
+int	ft_verification_map(t_vars *vars)
 {
-	if(!map)
+	if (!vars->map)
 		return (1);
-	if (ft_isstr(map, "CEP01"))
-		return (ft_erreur(map));
-	if (ft_verification_cpe(map))
-		return (ft_erreur(map));
-	if (ft_verif_lignes(map))
-		return (ft_erreur(map));
-	if (ft_verification_murs(map))
-		return (ft_erreur(map));
-	if (ft_verification_chemin(map, ft_trouve_p(map, 'i'),
-			ft_trouve_p(map, 'j')))
-		return (ft_erreur(map));
+	if (ft_isstr(vars->map, "CEP01"))
+		return (ft_erreur(vars->map));
+	if (ft_verification_cpe(vars->map))
+		return (ft_erreur(vars->map));
+	if (ft_verif_lignes(vars->map))
+		return (ft_erreur(vars->map));
+	if (ft_verification_murs(vars->map))
+		return (ft_erreur(vars->map));
+	if (ft_verification_chemin(vars->map, ft_trouve_p(vars->map, 'i', vars),
+			ft_trouve_p(vars->map, 'j', vars)))
+		return (ft_erreur(vars->map));
 	return (0);
 }
