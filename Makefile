@@ -2,6 +2,8 @@ SRCS = parsing_carte.c \
 	utils.c \
 	verif_chemin.c \
 	new_main.c \
+	mouvements.c \
+	utils_mouvements.c \
 	#main.c \
 
 OBJS = $(SRCS:.c=.o)

@@ -1,44 +1,20 @@
 #include "so_long.h"
 
-int ft_verif_mouvement(char **map, int i, int j)
-{
-	if(map[j][i] == '1')
-		return (1);
-	if(map[j][i] == 'c' || map[j][i] == 'C')
-	{
-		map[j][i] = '0';
-		return (0);
-	}
-	if(map[j][i] == 'e')
-	{
-		if(ft_nombre_de_e_c(map, 'c') == 0)
-			ft_printf("c'est bueno\n");
-		else
-			ft_printf("pas fini mon coco\n");
-	}
-	return (0);
-}
-
 int	ft_mouvements_et_close(int keycode, t_vars *vars)
 {
 	static int i = 1;
 
 	if(keycode == 'w')
 	{
-		if(!ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y - 50)/50)))
+		if(ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y - 50)/50)))
 		{
-			ft_printf("%d\n", i);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->sol, vars->x, vars->y);
-			mlx_destroy_image(vars->mlx, vars->perso);
-			vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/perso_et_sol.xpm", &vars->img_width, &vars->img_height);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->perso, vars->x, vars->y - 50);
-			vars->y = vars->y - 50;
+			ft_haut(vars, i);
 			i++;
 		}
 	}
 	else if(keycode == 'a')
 	{
-		if(!ft_verif_mouvement(vars->map, ((vars->x-50)/50), (vars->y/50)))
+		if(ft_verif_mouvement(vars->map, ((vars->x-50)/50), (vars->y/50)))
 		{
 			ft_printf("%d\n", i);
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->sol, vars->x, vars->y);
@@ -51,20 +27,15 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 	}
 	else if(keycode == 's')
 	{
-		if(!ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y+50)/50)))
+		if(ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y+50)/50)))
 		{
-			ft_printf("%d\n", i);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->sol, vars->x, vars->y);
-			mlx_destroy_image(vars->mlx, vars->perso);
-			vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/perso_et_sol.xpm", &vars->img_width, &vars->img_height);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->perso, vars->x, vars->y + 50);
-			vars->y = vars->y + 50;
+			ft_bas(vars, i);
 			i++;
 		}
 	}
 	else if(keycode == 'd')
 	{
-		if(!ft_verif_mouvement(vars->map, ((vars->x+50)/50), (vars->y/50)))
+		if(ft_verif_mouvement(vars->map, ((vars->x+50)/50), (vars->y/50)))
 		{
 			ft_printf("%d\n", i);
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->sol, vars->x, vars->y);

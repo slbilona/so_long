@@ -21,6 +21,7 @@ typedef struct	s_vars {
 	int		img_width;
 	int		img_height;
 	char	**map;
+	int		booleen;
 }				t_vars;
 
 
@@ -44,5 +45,13 @@ void	ft_free_temp(char **temp, int y);
 //verif chemin
 int	ft_nombre_de_e_c(char **map, char c);
 int	ft_verification_chemin(char **map, int i, int j);
+
+//mouvements
+void ft_haut(t_vars *vars, int i);
+void ft_bas(t_vars *vars, int i);
+
+//utils mouvements
+int ft_verif_mouvement(char **map, int i, int j);
+int ft_verif_sortie(char **map, int i, int j);
 
 #endif
