@@ -2,35 +2,35 @@
 
 int	ft_mouvements_et_close(int keycode, t_vars *vars)
 {
-	static int i = 1;
+	static int	i = 1;
 
-	if(keycode == 'w')
+	if (keycode == 'w')
 	{
-		if(ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y - 50)/50), vars))
+		if (ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y - 50)/50), vars))
 		{
 			ft_haut(vars, i);
 			i++;
 		}
 	}
-	else if(keycode == 'a')
+	else if (keycode == 'a')
 	{
-		if(ft_verif_mouvement(vars->map, ((vars->x-50)/50), (vars->y/50), vars))
+		if (ft_verif_mouvement(vars->map, ((vars->x-50)/50), (vars->y/50), vars))
 		{
 			ft_gauche(vars, i);
 			i++;
 		}
 	}
-	else if(keycode == 's')
+	else if (keycode == 's')
 	{
-		if(ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y+50)/50), vars))
+		if (ft_verif_mouvement(vars->map, (vars->x/50), ((vars->y+50)/50), vars))
 		{
 			ft_bas(vars, i);
 			i++;
 		}
 	}
-	else if(keycode == 'd')
+	else if (keycode == 'd')
 	{
-		if(ft_verif_mouvement(vars->map, ((vars->x+50)/50), (vars->y/50), vars))
+		if (ft_verif_mouvement(vars->map, ((vars->x+50)/50), (vars->y/50), vars))
 		{
 			ft_droite(vars, i);
 			i++;
@@ -44,19 +44,19 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int fd;
-	t_vars vars;
+	t_vars	vars;
+	int		fd;
 
-	if(ac == 2)
+	if (ac == 2)
 	{
-		if(!ft_verif_ber(av[1]))
+		if (!ft_verif_ber(av[1]))
 		{
 			fd = open(av[1], O_RDONLY);
 			vars.map = ft_creation_map(fd);
 			close(fd);
-			if(ft_verification_map(&vars))
+			if (ft_verification_map(&vars))
 				ft_printf("Error\n");
 			else
 			{

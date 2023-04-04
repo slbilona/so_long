@@ -63,13 +63,13 @@ int	ft_nombre_de_e_c(char **map, char c)
 
 int	verif_emplacement(char *map)
 {
-	if(*map == '0' || *map == 'C' || *map == 'E')
+	if (*map == '0' || *map == 'C' || *map == 'E')
 	{
 		if (*map == 'E')
 			*map = 'e';
-		if(*map == 'C')
+		if (*map == 'C')
 			*map = 'c';
-		if(*map == '0')
+		if (*map == '0')
 			*map = '2';
 		return (0);
 	}
