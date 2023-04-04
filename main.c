@@ -1,134 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/04 20:36:20 by ilselbon          #+#    #+#             */
+/*   Updated: 2023/04/04 20:36:20 by ilselbon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-/*
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	ft_mouvements_et_close(int keycode, t_vars *vars)
 {
-	char	*dst;
+	static int	i = 1;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1200, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1200, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	int i = 5;
-	int j = 5;
-	while(i < 1070)
+	if (keycode == 'w')
 	{
-		if(j < 10)
-			my_mlx_pixel_put(&img, i, i, 0xABEC56);
-		else if (j < 20)
-			my_mlx_pixel_put(&img, i, i, 0xC756EC);
-		j++;
-		if(j == 20)
-			j = 0;
-		
-		i++;
+		if (ft_verif_mouvement(vars->map, (vars->x / 50),
+				((vars->y - 50) / 50), vars))
+			ft_haut(vars, &i);
 	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
-}*/
-
-/*
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	ft_printf("Hello from key_hook!\n");
+	else if (keycode == 'a')
+	{
+		if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
+				(vars->y / 50), vars))
+			ft_gauche(vars, &i);
+	}
+	else if (keycode == 's')
+	{
+		if (ft_verif_mouvement(vars->map, (vars->x / 50),
+				((vars->y + 50) / 50), vars))
+			ft_bas(vars, &i);
+	}
+	else if (keycode == 'd')
+	{
+		if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
+				(vars->y / 50), vars))
+			ft_droite(vars, &i);
+	}
+	else if (keycode == 65307)
+		exit(ft_free_all(vars));
 	return (0);
 }
 
-int mouse_hook(int keycode, t_vars *vars)
-{
-	ft_printf("%d\n", keycode);
-	return (0);
-}
-
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_vars	vars;
+	int		fd;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_mouse_hook(vars.win, mouse_hook, &vars);
-	mlx_loop(vars.mlx);
-}
-*/
-/*
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int	render_next_frame(int keycode, void *YourStruct)
-{
-	ft_printf("test\n");
-	return (0);
-}
-
-int	main(void)
-{
-	t_vars YourStruct;
-
-	YourStruct.mlx = mlx_init();
-	mlx_loop_hook(YourStruct.mlx, render_next_frame, &YourStruct);
-	mlx_loop(YourStruct.mlx);
-}*/
-
-/*
-int main(int ac, char **av)
-{
-	int fd;
-
-	if(ac == 2)
+	if (ac == 2)
 	{
-		if(!ft_verif_ber(av[1]))
+		if (!ft_verif_ber(av[1]))
 		{
 			fd = open(av[1], O_RDONLY);
-			if(ft_verification_map(ft_creation_map(fd)))
+			vars.map = ft_creation_map(fd);
+			close(fd);
+			if (ft_verification_map(&vars))
 				ft_printf("Error\n");
 			else
-				ft_printf("c'est bon pour le moment\n");
-			close(fd);
+			{
+				vars.booleen = 0;
+				ft_ouverture_fenetre(vars.map, &vars);
+			}
 		}
 		else
 			ft_printf("Error\n");
 	}
 	return (0);
-}*/
-
-int    main(void)
-{
-    void    *mlx;
-    void    *mlx_win;
-    void     *img;
-    char     *relative_path = "/mnt/nfs/homes/ilselbon/Cursus/Cercle_3/so_long/img/pixil-frame-0-_1_.xpm";
-    int     img_width;
-    int        img_height;
-
-    mlx = mlx_init();
-    img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-    mlx_win = mlx_new_window(mlx, 720, 570, "Hello world!");
-
-    mlx_put_image_to_window(mlx, mlx_win, img, 100, 100);
-    mlx_loop(mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:47:13 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/01 15:57:45 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/04 21:07:07 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int	verif_emplacement(char *map)
 
 int	ft_verification_chemin(char **map, int i, int j)
 {
-	int	dr[4] = {0, 0, -1, 1};
-	int	dc[4] = {1, -1, 0, 0};
-	int	i2;
-	int	j2;
-	int	o;
+	static int	dr[4] = {0, 0, -1, 1};
+	static int	dc[4] = {1, -1, 0, 0};
+	int			i2;
+	int			j2;
+	int			o;
 
 	if (ft_nombre_de_e_c(map, 'E') != 0 || ft_nombre_de_e_c(map, 'C') != 0)
 	{

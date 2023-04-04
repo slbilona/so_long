@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:18:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/03/28 19:47:34 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/04 20:51:45 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_verif_ber(char *str)
 	char	ber[4];
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	j = 0;
 	ber[0] = '.';
