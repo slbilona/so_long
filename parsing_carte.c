@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/04 20:40:12 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:20:12 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	ft_verif_lignes(char **map)
 			return (1);
 		j++;
 	}
-	if (j == temp)
-		return (1);
 	return (0);
 }
 
