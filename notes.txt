@@ -1,3 +1,6 @@
-1 - trouver comment utiliser uniquement les toucher wasd
-2 - trouver comment adapter la taille d'une imag ea l'ecran
-3 - utiliser les loops
+trucs a faire avant de push :
+
+- finir la norme
+- regler le truc qui verifie la taille de l'ecran
+--proteger--mes--malloc--
+- le Makefile relink

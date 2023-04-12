@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:18:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/04 20:51:45 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:39:00 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,54 +25,6 @@ int	ft_new_strchr(char *str, char c)
 			compte++;
 	}
 	return (compte);
-}
-
-char	**ft_add_line(char **temp, char *str)
-{
-	static int	y = 0;
-	char		**map;
-	int			i;
-	int			j;
-
-	j = y - 1;
-	map = malloc(sizeof(char *) * (y + 2));
-	map[y] = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	while (j >= 0)
-	{
-		i = 0;
-		map[j] = malloc(sizeof(char) * (ft_strlen(temp[j]) + 1));
-		while (temp[j][i])
-		{
-			map[j][i] = temp[j][i];
-			i++;
-		}
-		map[j][i] = 0;
-		j--;
-	}
-	i = 0;
-	while (str[i] && str[i] != '\n')
-	{
-		map[y][i] = str[i];
-		i++;
-	}
-	map[y][i] = 0;
-	map[y + 1] = NULL;
-	ft_free_temp(temp, y);
-	y++;
-	return (map);
-}
-
-void	ft_free_temp(char **temp, int y)
-{
-	if (y > 0)
-	{
-		while (y >= 0)
-		{
-			free(temp[y]);
-			y--;
-		}
-		free(temp);
-	}
 }
 
 int	ft_erreur(char **map)
@@ -121,4 +73,18 @@ int	ft_verif_ber(char *str)
 	if (!ber[j])
 		return (0);
 	return (1);
+}
+
+int	ft_verif_un(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != '1')
+			return (1);
+		i++;
+	}
+	return (0);
 }

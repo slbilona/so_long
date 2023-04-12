@@ -5,6 +5,7 @@ SRCS = parsing_carte.c \
 	mouvements.c \
 	utils_mouvements.c \
 	fenetre.c \
+	creation_map.c \
 
 OBJS = $(SRCS:.c=.o)
 

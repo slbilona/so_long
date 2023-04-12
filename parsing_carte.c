@@ -6,27 +6,11 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/06 16:20:12 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:38:13 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-char	**ft_creation_map(int fd)
-{
-	char		*str;
-	static char	**map;
-
-	str = get_next_line(fd);
-	map = NULL;
-	while (str)
-	{
-		map = ft_add_line(map, str);
-		free(str);
-		str = get_next_line(fd);
-	}
-	return (map);
-}
 
 int	ft_verif_lignes(char **map)
 {
@@ -71,28 +55,18 @@ int	ft_verification_murs(char **map)
 	int	y;
 
 	j = 1;
-	i = 0;
 	y = ft_trouve_y(map) - 1;
-	while (map[0][i])
-	{
-		if (map[0][i] != '1')
-			return (1);
-		i++;
-	}
-	i--;
+	if (ft_verif_un(map[0]))
+		return (1);
+	i = ft_strlen(map[0]) - 1;
 	while (j < y)
 	{
 		if (map[j][0] != '1' || map[j][i] != '1')
 			return (1);
 		j++;
 	}
-	i = 0;
-	while (map[y][i])
-	{
-		if (map[y][i] != '1')
-			return (1);
-		i++;
-	}
+	if (ft_verif_un(map[y]))
+		return (1);
 	return (0);
 }
 
