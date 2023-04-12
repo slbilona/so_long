@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/06 15:14:38 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:56:36 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,17 @@ void	ft_initialisation_images(t_vars *vars)
 {
 	int	x;
 	int	y;
+	int i;
+	int j;
 
+	i = 0;
+	j = 0;
 	x = (ft_strlen(vars->map[0]) * 50);
 	y = (ft_trouve_y(vars->map) * 50);
+
 	vars->mlx = mlx_init();
+	mlx_get_screen_size(vars->mlx, &i, &j);
+	ft_printf("%d, %d\n", i, j);
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
 			"./img/murclaires_2_0.xpm", &vars->img_width, &vars->img_height);
 	vars->collec = mlx_xpm_file_to_image(vars->mlx,
