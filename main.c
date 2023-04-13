@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:36:20 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/12 15:24:12 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:27:18 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	main(int ac, char **av)
 			else
 			{
 				vars.booleen = 0;
-				ft_ouverture_fenetre(vars.map, &vars);
+				vars.droite_gauche = 1;
+				if (ft_ouverture_fenetre(vars.map, &vars))
+					ft_printf("Error\n");
 			}
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:05 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:23:03 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_vars {
 	void	*mur;
 	void	*collec;
 	void	*sol;
+	int		droite_gauche;
 	void	*perso;
 	void	*exit;
 	int		y;
@@ -65,20 +66,18 @@ int		ft_verification_chemin(char **map, int i, int j);
 
 // mouvements
 int		ft_mouvements_et_close(int keycode, t_vars *vars);
-void	ft_bas(t_vars *vars, int *i);
-void	ft_haut(t_vars *vars, int *i);
-void	ft_droite(t_vars *vars, int *i);
-void	ft_gauche(t_vars *vars, int *i);
+void	ft_move(t_vars *vars, int *i, int px, int py);
 
 // utils mouvements
 int		ft_verif_sortie(char **map, int i, int j);
 int		ft_verif_mouvement(char **map, int i, int j, t_vars *vars);
+void	ft_else(t_vars *vars, int px, int py);
 
 // fenetre
 int		ft_croix(t_vars *vars);
 int		ft_free_all(t_vars *vars);
 int		ft_initialisation_images(t_vars *vars);
-void	ft_placement_px(int j, int y, t_vars *vars);
 int		ft_ouverture_fenetre(char **map, t_vars *vars);
+void	ft_placement_px(int j, int y, t_vars *vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 16:04:55 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:31:17 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,17 @@ int	ft_initialisation_images(t_vars *vars)
 {
 	int	x;
 	int	y;
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	x = (ft_strlen(vars->map[0]) * 50);
 	y = (ft_trouve_y(vars->map) * 50);
-
 	vars->mlx = mlx_init();
-	mlx_get_screen_size(vars->mlx, &i, &j);
-	if(i < x || j < y)
+	mlx_get_screen_size(vars->mlx, &j, &i);
+	if (i < x || j < y)
 		return (1);
-	ft_printf("%d, %d\n", i, j);
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
 			"./img/murclaires_2_0.xpm", &vars->img_width, &vars->img_height);
 	vars->collec = mlx_xpm_file_to_image(vars->mlx,
@@ -58,7 +56,7 @@ int	ft_initialisation_images(t_vars *vars)
 	vars->sol = mlx_xpm_file_to_image(vars->mlx,
 			"./img/sol.xpm", &vars->img_width, &vars->img_height);
 	vars->perso = mlx_xpm_file_to_image(vars->mlx,
-			"./img/perso_et_sol.xpm", &vars->img_width, &vars->img_height);
+			"img/perso_d.xpm", &vars->img_width, &vars->img_height);
 	vars->exit = mlx_xpm_file_to_image(vars->mlx,
 			"./img/arrivee.xpm", &vars->img_width, &vars->img_height);
 	vars->win = mlx_new_window(vars->mlx, x, y, "Hello world!");
@@ -100,7 +98,7 @@ int	ft_ouverture_fenetre(char **map, t_vars *vars)
 	int	y;
 	int	j;
 
-	if(ft_initialisation_images(vars))
+	if (ft_initialisation_images(vars))
 		return (1);
 	mlx_hook(vars->win, 2, 1L << 0, ft_mouvements_et_close, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_croix, vars);
