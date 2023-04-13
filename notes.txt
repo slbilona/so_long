@@ -3,4 +3,5 @@ trucs a faire avant de push :
 - finir la norme
 --regler--le--truc--qui--verifie--la--taille--de--l'ecran--
 --proteger--mes--malloc--
-- le Makefile relink
+--le--Makefile--relink--
+- fermer la page apres etre arriver a la fin (afficher felicitation)
