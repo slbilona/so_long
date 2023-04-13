@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/12 15:27:51 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:04:05 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int		ft_verif_mouvement(char **map, int i, int j, t_vars *vars);
 // fenetre
 int		ft_croix(t_vars *vars);
 int		ft_free_all(t_vars *vars);
-void	ft_initialisation_images(t_vars *vars);
+int		ft_initialisation_images(t_vars *vars);
 void	ft_placement_px(int j, int y, t_vars *vars);
-void	ft_ouverture_fenetre(char **map, t_vars *vars);
+int		ft_ouverture_fenetre(char **map, t_vars *vars);
 
 #endif

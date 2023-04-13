@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/12 22:56:36 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:04:55 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_free_all(t_vars *vars)
 	return (0);
 }
 
-void	ft_initialisation_images(t_vars *vars)
+int	ft_initialisation_images(t_vars *vars)
 {
 	int	x;
 	int	y;
@@ -48,6 +48,8 @@ void	ft_initialisation_images(t_vars *vars)
 
 	vars->mlx = mlx_init();
 	mlx_get_screen_size(vars->mlx, &i, &j);
+	if(i < x || j < y)
+		return (1);
 	ft_printf("%d, %d\n", i, j);
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
 			"./img/murclaires_2_0.xpm", &vars->img_width, &vars->img_height);
@@ -60,6 +62,7 @@ void	ft_initialisation_images(t_vars *vars)
 	vars->exit = mlx_xpm_file_to_image(vars->mlx,
 			"./img/arrivee.xpm", &vars->img_width, &vars->img_height);
 	vars->win = mlx_new_window(vars->mlx, x, y, "Hello world!");
+	return (0);
 }
 
 void	ft_placement_px(int j, int y, t_vars *vars)
@@ -92,12 +95,13 @@ int	ft_croix(t_vars *vars)
 	return (0);
 }
 
-void	ft_ouverture_fenetre(char **map, t_vars *vars)
+int	ft_ouverture_fenetre(char **map, t_vars *vars)
 {
 	int	y;
 	int	j;
 
-	ft_initialisation_images(vars);
+	if(ft_initialisation_images(vars))
+		return (1);
 	mlx_hook(vars->win, 2, 1L << 0, ft_mouvements_et_close, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_croix, vars);
 	y = 0;
@@ -109,4 +113,5 @@ void	ft_ouverture_fenetre(char **map, t_vars *vars)
 		j++;
 	}
 	mlx_loop(vars->mlx);
+	return (0);
 }
