@@ -1,3 +1,6 @@
+SRCDIR = src
+OBJDIR = points_o
+
 SRCS = parsing_carte.c \
 	utils.c \
 	verif_chemin.c \
@@ -5,9 +8,9 @@ SRCS = parsing_carte.c \
 	mouvements.c \
 	utils_mouvements.c \
 	fenetre.c \
-	creation_map.c \
+	creation_map.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 
 CC = gcc
 
@@ -23,20 +26,23 @@ LIBFT = Libft_clone/libft.a
 
 all : $(NAME)
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) | $(OBJDIR)
 	make -C Libft_clone
 	make -C minilibx-linux
-	$(CC) ${CFLAGS} $(OBJS) $(MINILIB) $(FT_PRINTF) $(LIBFT)  -lXext -lX11 -o $(NAME)
-	mv *.o points_o
-	@echo "🧚 tout est pret 🧚"
+	$(CC) $(CFLAGS) $(OBJS) $(MINILIB) $(FT_PRINTF) $(LIBFT) -lXext -lX11 -o $@
+	clear
+	@echo "🧚 tout est prêt 🧚"
+
+$(OBJDIR)/%.o:%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean :
 	make clean -C Libft_clone
 	make clean -C minilibx-linux
-	rm -f points_o/*.o
+	rm -rf $(OBJDIR)
 
 fclean : clean
 	make fclean -C Libft_clone
@@ -53,4 +59,4 @@ re : fclean all
 
 .PHONY : all clean fclean re git
 
-.SILENT : $(NAME)
+.SILENT : all clean fclean re git $(NAME) $(OBJDIR)
