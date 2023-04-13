@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:50:34 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 17:23:06 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:38:06 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	ft_verif_sortie(char **map, int i, int j)
 void	ft_else(t_vars *vars, int px, int py)
 {
 	if (vars->droite_gauche == 1)
-		vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/fee_et_drapeau_droite.xpm",
-			&vars->img_width, &vars->img_height);
+		vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/fee_et_drap_d.xpm",
+				&vars->img_width, &vars->img_height);
 	else
-		vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/fee_et_drapeau_gauche.xpm",
-			&vars->img_width, &vars->img_height);
+		vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/fee_et_drap_g.xpm",
+				&vars->img_width, &vars->img_height);
 	mlx_put_image_to_window(vars->mlx, vars->win,
 		vars->perso, (vars->x + px), (vars->y + py));
 }

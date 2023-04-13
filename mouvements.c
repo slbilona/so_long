@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:51:55 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 17:30:09 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:36:39 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 	{	
 		if (vars->droite_gauche == 1)
 			vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/perso_d.xpm",
-				&vars->img_width, &vars->img_height);
+					&vars->img_width, &vars->img_height);
 		else
 			vars->perso = mlx_xpm_file_to_image(vars->mlx,
 					"img/perso_g.xpm", &vars->img_width, &vars->img_height);
