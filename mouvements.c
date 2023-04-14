@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:51:55 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 19:33:27 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:08:12 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 	mlx_destroy_image(vars->mlx, vars->perso);
 	if (vars->booleen == 0)
 	{
-		if (vars->droite_gauche == 1)
+		if (vars->droite_gauche == 0)
 			vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/perso_d.xpm",
 					&vars->img_width, &vars->img_height);
 		else
@@ -56,7 +56,7 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 		if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
 				(vars->y / 50), vars))
 		{
-			vars->droite_gauche = 0;
+			vars->droite_gauche = 1;
 			ft_move(vars, &i, (-50), 0);
 		}
 	}
@@ -71,7 +71,7 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 		if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
 				(vars->y / 50), vars))
 		{
-			vars->droite_gauche = 1;
+			vars->droite_gauche = 0;
 			ft_move(vars, &i, 50, 0);
 		}
 	}

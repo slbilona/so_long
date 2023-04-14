@@ -8,7 +8,8 @@ SRCS = parsing_carte.c \
 	mouvements.c \
 	utils_mouvements.c \
 	fenetre.c \
-	creation_map.c
+	creation_map.c \
+	utils_fenetre.c \
 
 OBJS = $(addprefix $(OBJDIR)/, $(notdir $(SRCS:.c=.o)))
 

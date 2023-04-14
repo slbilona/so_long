@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:50:34 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 19:17:16 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:09:29 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_else(t_vars *vars, int px, int py, int i)
 {
 	if (vars->arrivee == -1)
 		vars->arrivee = 4;
-	if (vars->droite_gauche == 1)
+	if (vars->droite_gauche == 0)
 		vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/fee_et_drap_d.xpm",
 				&vars->img_width, &vars->img_height);
 	else

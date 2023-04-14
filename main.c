@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:36:20 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 19:26:00 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:08:18 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	main(int ac, char **av)
 			else
 			{
 				vars.arrivee = -1;
-				vars.booleen = 0;
-				vars.droite_gauche = 1;
 				if (ft_ouverture_fenetre(vars.map, &vars))
 				{
 					ft_free_all(&vars);

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:04:22 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 18:51:43 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:52:59 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,30 +98,15 @@ int	ft_verification_map(t_vars *vars)
 	if (!vars->map)
 		return (1);
 	if (ft_isstr(vars->map, "CEP01"))
-	{
-		ft_printf("1\n");
 		return (ft_erreur(vars->map));
-	}
 	if (ft_verification_cpe(vars->map))
-	{
-		ft_printf("2\n");
 		return (ft_erreur(vars->map));
-	}
 	if (ft_verif_lignes(vars->map))
-	{
-		ft_printf("3\n");
 		return (ft_erreur(vars->map));
-	}
 	if (ft_verification_murs(vars->map))
-	{
-		ft_printf("4\n");
 		return (ft_erreur(vars->map));
-	}
 	if (ft_verification_chemin(vars->map, ft_trouve_p(vars->map, 'i', vars),
 			ft_trouve_p(vars->map, 'j', vars)))
-	{
-		ft_printf("5\n");
 		return (ft_erreur(vars->map));
-	}
 	return (0);
 }

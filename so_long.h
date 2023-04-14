@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 19:30:35 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:27:23 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@
 # include <stdlib.h>
 
 typedef struct s_vars {
+	int		i;
+	int		j;
+	int		y;
+	int		x;
+	int		booleen;
+	int		arrivee;
+	int		img_width;
+	int		img_height;
+	int		droite_gauche;
+	char	**map;
 	void	*mlx;
 	void	*win;
 	void	*mur;
-	void	*collec;
 	void	*sol;
-	int		droite_gauche;
-	void	*perso;
 	void	*exit;
-	int		y;
-	int		x;
-	int		img_width;
-	int		img_height;
-	char	**map;
-	int		booleen;
-	int		arrivee;
+	void	*perso;
+	void	*collec;
 }				t_vars;
 
 // parsing carte
@@ -75,10 +77,13 @@ int		ft_verif_mouvement(char **map, int i, int j, t_vars *vars);
 void	ft_else(t_vars *vars, int px, int py, int i);
 
 // fenetre
-int		ft_croix(t_vars *vars);
 int		ft_free_all(t_vars *vars);
 int		ft_initialisation_images(t_vars *vars);
 int		ft_ouverture_fenetre(char **map, t_vars *vars);
 void	ft_placement_px(int j, int y, t_vars *vars);
+
+// utils fenetre
+int		ft_croix(t_vars *vars);
+int ft_juste_un_if(t_vars *vars);
 
 #endif

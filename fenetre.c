@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 19:30:29 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:26:40 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,14 @@ int	ft_initialisation_images(t_vars *vars)
 {
 	int	x;
 	int	y;
-	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
 	x = (ft_strlen(vars->map[0]) * 50);
 	y = (ft_trouve_y(vars->map) * 50);
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
 		return (1);
-	mlx_get_screen_size(vars->mlx, &j, &i);
-	if (i < x || j < y)
+	mlx_get_screen_size(vars->mlx, &vars->j, &vars->i);
+	if (vars->i < x || vars->j < y)
 		return (1);
 	vars->win = mlx_new_window(vars->mlx, x, y, "Preciosa Hada");
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
@@ -69,10 +65,7 @@ int	ft_initialisation_images(t_vars *vars)
 			"img/perso_d.xpm", &vars->img_width, &vars->img_height);
 	vars->exit = mlx_xpm_file_to_image(vars->mlx,
 			"./img/arrivee.xpm", &vars->img_width, &vars->img_height);
-	if (!vars->mur || !vars->collec || !vars->sol
-		|| !vars->perso || !vars->exit || !vars->win)
-		return (1);
-	return (0);
+	return (ft_juste_un_if(vars));
 }
 
 void	ft_placement_px(int j, int y, t_vars *vars)
@@ -97,12 +90,6 @@ void	ft_placement_px(int j, int y, t_vars *vars)
 		x = x + 50;
 		i++;
 	}
-}
-
-int	ft_croix(t_vars *vars)
-{
-	exit(ft_free_all(vars));
-	return (0);
 }
 
 int	ft_ouverture_fenetre(char **map, t_vars *vars)
