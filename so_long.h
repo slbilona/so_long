@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 20:27:23 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 21:45:36 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void	ft_placement_px(int j, int y, t_vars *vars);
 
 // utils fenetre
 int		ft_croix(t_vars *vars);
-int ft_juste_un_if(t_vars *vars);
+int		ft_juste_un_if(t_vars *vars);
 
 #endif
