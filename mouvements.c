@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:51:55 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 22:11:47 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:16:34 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,6 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 	vars->x = vars->x + px;
 	vars->y = vars->y + py;
 	*i += 1;
-}
-
-void	ft_touche_d(t_vars *vars, int *i)
-{
-	if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
-			(vars->y / 50), vars))
-	{
-		vars->droite_gauche = 0;
-		ft_move(vars, i, 50, 0);
-	}
-}
-
-void	ft_touche_a(t_vars *vars, int *i)
-{
-	if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
-			(vars->y / 50), vars))
-	{
-		vars->droite_gauche = 1;
-		ft_move(vars, i, (-50), 0);
-	}
 }
 
 int	ft_mouvements_et_close(int keycode, t_vars *vars)

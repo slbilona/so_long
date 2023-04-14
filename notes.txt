@@ -5,3 +5,4 @@ trucs a faire avant de push :
 --proteger--mes--malloc--
 --le--Makefile--relink--
 --fermer--la--page--apres--etre--arriver----la--fin--(afficher--felicitation)--
+- verif map lvl4.ber

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 22:12:10 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:16:22 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ int		ft_verification_chemin(char **map, int i, int j);
 
 // mouvements
 int		ft_mouvements_et_close(int keycode, t_vars *vars);
-void	ft_touche_a(t_vars *vars, int *i);
-void	ft_touche_d(t_vars *vars, int *i);
 void	ft_move(t_vars *vars, int *i, int px, int py);
 
 // utils mouvements
 int		ft_verif_sortie(char **map, int i, int j);
 int		ft_verif_mouvement(char **map, int i, int j, t_vars *vars);
+void	ft_touche_a(t_vars *vars, int *i);
+void	ft_touche_d(t_vars *vars, int *i);
 void	ft_else(t_vars *vars, int px, int py, int i);
 
 // fenetre

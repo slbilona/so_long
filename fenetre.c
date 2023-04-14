@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 20:26:40 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:20:35 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,7 @@ int	ft_ouverture_fenetre(char **map, t_vars *vars)
 	int	j;
 
 	if (ft_initialisation_images(vars))
-	{
-		ft_printf("test\n");
 		return (1);
-	}
 	mlx_hook(vars->win, 2, 1L << 0, ft_mouvements_et_close, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_croix, vars);
 	y = 0;

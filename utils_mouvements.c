@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:50:34 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 20:09:29 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:19:05 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,28 @@ void	ft_else(t_vars *vars, int px, int py, int i)
 	mlx_put_image_to_window(vars->mlx, vars->win,
 		vars->perso, (vars->x + px), (vars->y + py));
 	if (vars->arrivee == 4)
-		ft_printf("Felicitation tu a finis en %d mouvements !\n", i);
+		ft_printf("Félicitation tu as fini en %d mouvements !\n", i);
 	if (vars->arrivee == 0)
 		exit(ft_free_all(vars));
 	vars->arrivee -= 1;
+}
+
+void	ft_touche_d(t_vars *vars, int *i)
+{
+	if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
+			(vars->y / 50), vars))
+	{
+		vars->droite_gauche = 0;
+		ft_move(vars, i, 50, 0);
+	}
+}
+
+void	ft_touche_a(t_vars *vars, int *i)
+{
+	if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
+			(vars->y / 50), vars))
+	{
+		vars->droite_gauche = 1;
+		ft_move(vars, i, (-50), 0);
+	}
 }
