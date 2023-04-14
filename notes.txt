@@ -1,7 +1,7 @@
 trucs a faire avant de push :
 
-- finir la norme
+--finir--la--norme--
 --regler--le--truc--qui--verifie--la--taille--de--l'ecran--
 --proteger--mes--malloc--
 --le--Makefile--relink--
-- fermer la page apres etre arriver a la fin (afficher felicitation)
+--fermer--la--page--apres--etre--arriver----la--fin--(afficher--felicitation)--
