@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:51:55 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 17:36:39 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:33:27 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_move(t_vars *vars, int *i, int px, int py)
 {
-	ft_printf("%d\n", *i);
+	if (vars->arrivee == -1)
+		ft_printf("%d\n", *i);
 	if (!ft_verif_sortie(vars->map, (vars->x / 50), (vars->y / 50)))
 		mlx_put_image_to_window(vars->mlx, vars->win,
 			vars->sol, vars->x, vars->y);
@@ -23,7 +24,7 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 			vars->exit, vars->x, vars->y);
 	mlx_destroy_image(vars->mlx, vars->perso);
 	if (vars->booleen == 0)
-	{	
+	{
 		if (vars->droite_gauche == 1)
 			vars->perso = mlx_xpm_file_to_image(vars->mlx, "img/perso_d.xpm",
 					&vars->img_width, &vars->img_height);
@@ -34,7 +35,7 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 			(vars->x + px), (vars->y + py));
 	}
 	else
-		ft_else(vars, px, py);
+		ft_else(vars, px, py, *i);
 	vars->x = vars->x + px;
 	vars->y = vars->y + py;
 	*i += 1;

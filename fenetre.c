@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 17:31:17 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:30:29 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,20 @@ int	ft_free_all(t_vars *vars)
 	int	i;
 
 	i = 0;
-	mlx_destroy_image(vars->mlx, vars->mur);
-	mlx_destroy_image(vars->mlx, vars->collec);
-	mlx_destroy_image(vars->mlx, vars->sol);
-	mlx_destroy_image(vars->mlx, vars->perso);
-	mlx_destroy_image(vars->mlx, vars->exit);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
+	if (vars->mur)
+		mlx_destroy_image(vars->mlx, vars->mur);
+	if (vars->collec)
+		mlx_destroy_image(vars->mlx, vars->collec);
+	if (vars->sol)
+		mlx_destroy_image(vars->mlx, vars->sol);
+	if (vars->perso)
+		mlx_destroy_image(vars->mlx, vars->perso);
+	if (vars->exit)
+		mlx_destroy_image(vars->mlx, vars->exit);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+		mlx_destroy_display(vars->mlx);
 	while (vars->map[i])
 	{
 		free(vars->map[i]);
@@ -46,9 +53,12 @@ int	ft_initialisation_images(t_vars *vars)
 	x = (ft_strlen(vars->map[0]) * 50);
 	y = (ft_trouve_y(vars->map) * 50);
 	vars->mlx = mlx_init();
+	if (!vars->mlx)
+		return (1);
 	mlx_get_screen_size(vars->mlx, &j, &i);
 	if (i < x || j < y)
 		return (1);
+	vars->win = mlx_new_window(vars->mlx, x, y, "Preciosa Hada");
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
 			"./img/murclaires_2_0.xpm", &vars->img_width, &vars->img_height);
 	vars->collec = mlx_xpm_file_to_image(vars->mlx,
@@ -59,7 +69,9 @@ int	ft_initialisation_images(t_vars *vars)
 			"img/perso_d.xpm", &vars->img_width, &vars->img_height);
 	vars->exit = mlx_xpm_file_to_image(vars->mlx,
 			"./img/arrivee.xpm", &vars->img_width, &vars->img_height);
-	vars->win = mlx_new_window(vars->mlx, x, y, "Hello world!");
+	if (!vars->mur || !vars->collec || !vars->sol
+		|| !vars->perso || !vars->exit || !vars->win)
+		return (1);
 	return (0);
 }
 
@@ -99,7 +111,10 @@ int	ft_ouverture_fenetre(char **map, t_vars *vars)
 	int	j;
 
 	if (ft_initialisation_images(vars))
+	{
+		ft_printf("test\n");
 		return (1);
+	}
 	mlx_hook(vars->win, 2, 1L << 0, ft_mouvements_et_close, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_croix, vars);
 	y = 0;

@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:49:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/13 17:23:03 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:30:35 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_vars {
 	int		img_height;
 	char	**map;
 	int		booleen;
+	int		arrivee;
 }				t_vars;
 
 // parsing carte
@@ -71,7 +72,7 @@ void	ft_move(t_vars *vars, int *i, int px, int py);
 // utils mouvements
 int		ft_verif_sortie(char **map, int i, int j);
 int		ft_verif_mouvement(char **map, int i, int j, t_vars *vars);
-void	ft_else(t_vars *vars, int px, int py);
+void	ft_else(t_vars *vars, int px, int py, int i);
 
 // fenetre
 int		ft_croix(t_vars *vars);
