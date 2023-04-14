@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:51:55 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 20:08:12 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:11:47 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ void	ft_move(t_vars *vars, int *i, int px, int py)
 	*i += 1;
 }
 
+void	ft_touche_d(t_vars *vars, int *i)
+{
+	if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
+			(vars->y / 50), vars))
+	{
+		vars->droite_gauche = 0;
+		ft_move(vars, i, 50, 0);
+	}
+}
+
+void	ft_touche_a(t_vars *vars, int *i)
+{
+	if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
+			(vars->y / 50), vars))
+	{
+		vars->droite_gauche = 1;
+		ft_move(vars, i, (-50), 0);
+	}
+}
+
 int	ft_mouvements_et_close(int keycode, t_vars *vars)
 {
 	static int	i = 1;
@@ -52,14 +72,7 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 			ft_move(vars, &i, 0, (-50));
 	}
 	else if (keycode == 'a')
-	{
-		if (ft_verif_mouvement(vars->map, ((vars->x - 50) / 50),
-				(vars->y / 50), vars))
-		{
-			vars->droite_gauche = 1;
-			ft_move(vars, &i, (-50), 0);
-		}
-	}
+		ft_touche_a(vars, &i);
 	else if (keycode == 's')
 	{
 		if (ft_verif_mouvement(vars->map, (vars->x / 50),
@@ -67,14 +80,7 @@ int	ft_mouvements_et_close(int keycode, t_vars *vars)
 			ft_move(vars, &i, 0, 50);
 	}
 	else if (keycode == 'd')
-	{
-		if (ft_verif_mouvement(vars->map, ((vars->x + 50) / 50),
-				(vars->y / 50), vars))
-		{
-			vars->droite_gauche = 0;
-			ft_move(vars, &i, 50, 0);
-		}
-	}
+		ft_touche_d(vars, &i);
 	else if (keycode == 65307)
 		exit(ft_free_all(vars));
 	return (0);

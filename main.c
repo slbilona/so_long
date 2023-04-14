@@ -6,11 +6,21 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:36:20 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/14 20:08:18 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:06:29 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_partie_deux(t_vars *vars)
+{
+	vars->arrivee = -1;
+	if (ft_ouverture_fenetre(vars->map, vars))
+	{
+		ft_free_all(vars);
+		ft_printf("Error\n");
+	}
+}
 
 int	main(int ac, char **av)
 {
@@ -28,14 +38,7 @@ int	main(int ac, char **av)
 			if (ft_verification_map(&vars))
 				ft_printf("Error\n");
 			else
-			{
-				vars.arrivee = -1;
-				if (ft_ouverture_fenetre(vars.map, &vars))
-				{
-					ft_free_all(&vars);
-					ft_printf("Error\n");
-				}
-			}
+				ft_partie_deux(&vars);
 		}
 		else
 			ft_printf("Error\n");
