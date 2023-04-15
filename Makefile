@@ -44,6 +44,8 @@ clean :
 	make clean -C Libft_clone
 	make clean -C minilibx-linux
 	rm -rf $(OBJDIR)
+	clear
+	@echo "🧚 tout propre 🧚"
 
 fclean : clean
 	make fclean -C Libft_clone
