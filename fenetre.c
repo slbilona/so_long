@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/15 15:24:13 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:30:18 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	ft_initialisation_images(t_vars *vars)
 	if (!vars->mlx)
 		return (1);
 	mlx_get_screen_size(vars->mlx, &vars->j, &vars->i);
-	ft_printf("i : %d, x : %d\n j : %d, y : %d\n", vars->i, x, vars->j, y);
 	if (vars->j < x || vars->i < y)
 		return (1);
 	vars->win = mlx_new_window(vars->mlx, x, y, "Preciosa Hada");

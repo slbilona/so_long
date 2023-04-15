@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:36:20 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/15 15:28:55 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:29:57 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	main(int ac, char **av)
 			vars.map = ft_creation_map(fd);
 			close(fd);
 			if (ft_verification_map(&vars))
-				ft_printf("1 Error\n");
+				ft_printf("Error\n");
 			else
 				ft_partie_deux(&vars);
 		}
 		else
-			ft_printf("2 Error\n");
+			ft_printf("Error\n");
 	}
 	return (0);
 }

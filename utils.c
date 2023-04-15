@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:18:57 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/12 15:39:00 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:38:27 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,30 @@ int	ft_trouve_y(char **map)
 
 int	ft_verif_ber(char *str)
 {
-	char	ber[4];
+	char	*ber;
 	int		i;
 	int		j;
+	int		o;
 
 	i = 0;
-	j = 0;
-	ber[0] = '.';
-	ber[1] = 'b';
-	ber[2] = 'e';
-	ber[3] = 'r';
-	ber[4] = 0;
+	ber = ft_strdup(".ber");
 	while (str[i])
 	{
+		j = 0;
 		if (str[i] == ber[j])
-			j++;
+		{
+			o = i;
+			while (str[o] == ber[j] && str[o] && ber[j])
+			{
+				o++;
+				j++;
+			}
+			if (!str[o] && !ber[j])
+				return (free(ber), 0);
+		}
 		i++;
 	}
-	if (!ber[j])
-		return (0);
-	return (1);
+	return (free(ber), 1);
 }
 
 int	ft_verif_un(char *str)
