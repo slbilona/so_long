@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 22:12:29 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/15 15:19:19 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:52:25 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ int	ft_croix(t_vars *vars)
 	return (0);
 }
 
-int	ft_juste_un_if(t_vars *vars)
+int	ft_juste_un_if(t_vars *vars, int x, int y)
 {
-	if (!vars->mur || !vars->collec || !vars->sol
-		|| !vars->perso || !vars->exit || !vars->win)
-		return (1);
-	return (0);
+	if (vars->mur && vars->collec && vars->sol
+		&& vars->perso && vars->exit)
+	{
+		vars->win = mlx_new_window(vars->mlx, x, y, "Preciosa Hada");
+		if (vars->win)
+			return (0);
+	}
+	return (1);
 }

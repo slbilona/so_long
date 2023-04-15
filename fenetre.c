@@ -6,7 +6,7 @@
 /*   By: ilselbon <ilselbon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:49 by ilselbon          #+#    #+#             */
-/*   Updated: 2023/04/15 16:30:18 by ilselbon         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:59:50 by ilselbon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_initialisation_images(t_vars *vars)
 	mlx_get_screen_size(vars->mlx, &vars->j, &vars->i);
 	if (vars->j < x || vars->i < y)
 		return (1);
-	vars->win = mlx_new_window(vars->mlx, x, y, "Preciosa Hada");
 	vars->mur = mlx_xpm_file_to_image(vars->mlx,
 			"./img/murclaires_2_0.xpm", &vars->img_width, &vars->img_height);
 	vars->collec = mlx_xpm_file_to_image(vars->mlx,
@@ -65,7 +64,7 @@ int	ft_initialisation_images(t_vars *vars)
 			"img/perso_d.xpm", &vars->img_width, &vars->img_height);
 	vars->exit = mlx_xpm_file_to_image(vars->mlx,
 			"./img/arrivee.xpm", &vars->img_width, &vars->img_height);
-	return (ft_juste_un_if(vars));
+	return (ft_juste_un_if(vars, x, y));
 }
 
 void	ft_placement_px(int j, int y, t_vars *vars)
